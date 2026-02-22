@@ -1,0 +1,481 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03CFF5FA0B5840EFAC468ECA /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A03BE7189A2B155DD982CA /* ServiceManagement.framework */; };
+		04DC817A43BB23B2CBBB5C93 /* KeyCodeMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0282596CA8A93DD2ACD52EDF /* KeyCodeMapping.swift */; };
+		32B33DC96065FE3A829FB0B4 /* ZoneOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB77EEC21AA9A0467947AAB /* ZoneOverlayView.swift */; };
+		4E6009368D1F3B7462B4AF34 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABEBD19A55FDF6C33E3062 /* WindowManager.swift */; };
+		53FD18C24C2395003F8BC04F /* AccessibilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCD8B04E37874367070E9 /* AccessibilityManager.swift */; };
+		60347ECA68290BB83EBF8FD9 /* OnScreenZoneEditorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D7A3CAD5D68FDAF0DBE2BF /* OnScreenZoneEditorManager.swift */; };
+		8038ABE0C74C145C037EEB6B /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D93345B8AAAE9508B683556 /* AppState.swift */; };
+		82AEEBEF9B73AB839D832799 /* ZoneDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998CACD88ABE52E167E3F514 /* ZoneDetailView.swift */; };
+		98E3D07159E83589FD35E2BA /* OnScreenZoneEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D28535B428D816CF7E9DD4A /* OnScreenZoneEditorView.swift */; };
+		9CF7A45836A74CEE4438C910 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FD4117487F8F2B2B685CD6 /* ApplicationServices.framework */; };
+		A0E1620FA78ED92B51C35E2D /* ScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55BDE9D2341A5DCFC25FBB5 /* ScreenManager.swift */; };
+		A44B0C3A42A21AE5EA035BE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0A9DFEA82D0DF25D12F490 /* AppDelegate.swift */; };
+		AD4FDD90F4EB036790A80BC8 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E91E8317539FF640F0B1C9B /* Carbon.framework */; };
+		C2A23248DF9BAE6854B27A2E /* HotKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2423F911155657A6D14419B0 /* HotKeyManager.swift */; };
+		C6F97A1C530565F96377BC75 /* SnapperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE4911DF394C1869585821 /* SnapperApp.swift */; };
+		D113081C54C45039E4C478D7 /* AccessibilityPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FA87F14CA6B21E1B3E77C2 /* AccessibilityPromptView.swift */; };
+		DB98F7CFEFF59965862D4976 /* ZoneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A903648F15CBD6150B65E /* ZoneModel.swift */; };
+		DFAC2901946F3A5AF14C57E9 /* LoginItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF8EE7F94142CEBE57D7FB4 /* LoginItemManager.swift */; };
+		E33CE4AFB9F0A5578EA1CCFD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC76D10937C90F365A334FF /* Extensions.swift */; };
+		E5417E2FF36D9805BAB35789 /* MenuBarPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC35CD07BB1D581E64CCEA71 /* MenuBarPopoverView.swift */; };
+		F325F6CAA9A179825BAB7A14 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822609A48299EA8B8AFA0DC8 /* ConfigurationManager.swift */; };
+		F6FB218A7B7DF174E83AD4E1 /* ShortcutRecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F00F5100EAD99E295264E2 /* ShortcutRecorderView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0282596CA8A93DD2ACD52EDF /* KeyCodeMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCodeMapping.swift; sourceTree = "<group>"; };
+		0D93345B8AAAE9508B683556 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		21FD4117487F8F2B2B685CD6 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
+		2423F911155657A6D14419B0 /* HotKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKeyManager.swift; sourceTree = "<group>"; };
+		2DC76D10937C90F365A334FF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		382E1D23083033DB562E4560 /* Snapper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Snapper.entitlements; sourceTree = "<group>"; };
+		40BE9EE10BEF49D1DCA0F3C5 /* Snapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		44A03BE7189A2B155DD982CA /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		56F00F5100EAD99E295264E2 /* ShortcutRecorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutRecorderView.swift; sourceTree = "<group>"; };
+		578078843FA532A83EBA1C53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5E91E8317539FF640F0B1C9B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		65FA87F14CA6B21E1B3E77C2 /* AccessibilityPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityPromptView.swift; sourceTree = "<group>"; };
+		73D7A3CAD5D68FDAF0DBE2BF /* OnScreenZoneEditorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnScreenZoneEditorManager.swift; sourceTree = "<group>"; };
+		7D0A9DFEA82D0DF25D12F490 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7D28535B428D816CF7E9DD4A /* OnScreenZoneEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnScreenZoneEditorView.swift; sourceTree = "<group>"; };
+		822609A48299EA8B8AFA0DC8 /* ConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
+		88FE4911DF394C1869585821 /* SnapperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapperApp.swift; sourceTree = "<group>"; };
+		90ABEBD19A55FDF6C33E3062 /* WindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
+		998CACD88ABE52E167E3F514 /* ZoneDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneDetailView.swift; sourceTree = "<group>"; };
+		AAF8EE7F94142CEBE57D7FB4 /* LoginItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginItemManager.swift; sourceTree = "<group>"; };
+		ADB77EEC21AA9A0467947AAB /* ZoneOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneOverlayView.swift; sourceTree = "<group>"; };
+		CC35CD07BB1D581E64CCEA71 /* MenuBarPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarPopoverView.swift; sourceTree = "<group>"; };
+		D55BDE9D2341A5DCFC25FBB5 /* ScreenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenManager.swift; sourceTree = "<group>"; };
+		D63A903648F15CBD6150B65E /* ZoneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneModel.swift; sourceTree = "<group>"; };
+		E47FCD8B04E37874367070E9 /* AccessibilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityManager.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		46CFD4E40BDEBB95F1B5FCCF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD4FDD90F4EB036790A80BC8 /* Carbon.framework in Frameworks */,
+				03CFF5FA0B5840EFAC468ECA /* ServiceManagement.framework in Frameworks */,
+				9CF7A45836A74CEE4438C910 /* ApplicationServices.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		39B66CEE8EC32FBF47CADDFD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				40BE9EE10BEF49D1DCA0F3C5 /* Snapper.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3F20279E89A2B73139615F3D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E47FCD8B04E37874367070E9 /* AccessibilityManager.swift */,
+				822609A48299EA8B8AFA0DC8 /* ConfigurationManager.swift */,
+				2423F911155657A6D14419B0 /* HotKeyManager.swift */,
+				AAF8EE7F94142CEBE57D7FB4 /* LoginItemManager.swift */,
+				73D7A3CAD5D68FDAF0DBE2BF /* OnScreenZoneEditorManager.swift */,
+				D55BDE9D2341A5DCFC25FBB5 /* ScreenManager.swift */,
+				90ABEBD19A55FDF6C33E3062 /* WindowManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		434DE3E617CD319826334A91 /* ShortcutRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				56F00F5100EAD99E295264E2 /* ShortcutRecorderView.swift */,
+			);
+			path = ShortcutRecorder;
+			sourceTree = "<group>";
+		};
+		5AF90A18310B1DC6CC4939E4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				74CBB068DECA6B3DE45E77E5 /* MenuBar */,
+				774618E7F4AE1A638B48EA3D /* Onboarding */,
+				434DE3E617CD319826334A91 /* ShortcutRecorder */,
+				5CA17C97F5D6985FF96CF593 /* ZoneEditor */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5CA17C97F5D6985FF96CF593 /* ZoneEditor */ = {
+			isa = PBXGroup;
+			children = (
+				7D28535B428D816CF7E9DD4A /* OnScreenZoneEditorView.swift */,
+				998CACD88ABE52E167E3F514 /* ZoneDetailView.swift */,
+				ADB77EEC21AA9A0467947AAB /* ZoneOverlayView.swift */,
+			);
+			path = ZoneEditor;
+			sourceTree = "<group>";
+		};
+		61A2140930BAAD98423AB5D0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D63A903648F15CBD6150B65E /* ZoneModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		74CBB068DECA6B3DE45E77E5 /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				CC35CD07BB1D581E64CCEA71 /* MenuBarPopoverView.swift */,
+			);
+			path = MenuBar;
+			sourceTree = "<group>";
+		};
+		774618E7F4AE1A638B48EA3D /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				65FA87F14CA6B21E1B3E77C2 /* AccessibilityPromptView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		AAA7E2168F538A29330F95E5 = {
+			isa = PBXGroup;
+			children = (
+				CBD86CFF38B0F7B91294A78D /* Snapper */,
+				BC38DB4FBD5A0BD5D9BE20BF /* Frameworks */,
+				39B66CEE8EC32FBF47CADDFD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BC38DB4FBD5A0BD5D9BE20BF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				21FD4117487F8F2B2B685CD6 /* ApplicationServices.framework */,
+				5E91E8317539FF640F0B1C9B /* Carbon.framework */,
+				44A03BE7189A2B155DD982CA /* ServiceManagement.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C0A1A975AA70887E0755CCBB /* App */ = {
+			isa = PBXGroup;
+			children = (
+				7D0A9DFEA82D0DF25D12F490 /* AppDelegate.swift */,
+				0D93345B8AAAE9508B683556 /* AppState.swift */,
+				88FE4911DF394C1869585821 /* SnapperApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		CBD86CFF38B0F7B91294A78D /* Snapper */ = {
+			isa = PBXGroup;
+			children = (
+				578078843FA532A83EBA1C53 /* Info.plist */,
+				382E1D23083033DB562E4560 /* Snapper.entitlements */,
+				C0A1A975AA70887E0755CCBB /* App */,
+				61A2140930BAAD98423AB5D0 /* Models */,
+				3F20279E89A2B73139615F3D /* Services */,
+				E2FD39819799514E33305E6E /* Utilities */,
+				5AF90A18310B1DC6CC4939E4 /* Views */,
+			);
+			path = Snapper;
+			sourceTree = "<group>";
+		};
+		E2FD39819799514E33305E6E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2DC76D10937C90F365A334FF /* Extensions.swift */,
+				0282596CA8A93DD2ACD52EDF /* KeyCodeMapping.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		"TEMP_D43B49DB-B0B5-4409-8904-59ED9A46259C" /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		770B5204EBE266D5DD99B366 /* Snapper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBA07DE2013CE259BD7200DE /* Build configuration list for PBXNativeTarget "Snapper" */;
+			buildPhases = (
+				EAE0B8C32F1B4EF867727C4E /* Sources */,
+				46CFD4E40BDEBB95F1B5FCCF /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Snapper;
+			packageProductDependencies = (
+			);
+			productName = Snapper;
+			productReference = 40BE9EE10BEF49D1DCA0F3C5 /* Snapper.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9C21FDC6B12C83893AF3E756 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					770B5204EBE266D5DD99B366 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = C2CB0B358D0349B72E0074FC /* Build configuration list for PBXProject "Snapper" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = AAA7E2168F538A29330F95E5;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				770B5204EBE266D5DD99B366 /* Snapper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EAE0B8C32F1B4EF867727C4E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53FD18C24C2395003F8BC04F /* AccessibilityManager.swift in Sources */,
+				D113081C54C45039E4C478D7 /* AccessibilityPromptView.swift in Sources */,
+				A44B0C3A42A21AE5EA035BE5 /* AppDelegate.swift in Sources */,
+				8038ABE0C74C145C037EEB6B /* AppState.swift in Sources */,
+				F325F6CAA9A179825BAB7A14 /* ConfigurationManager.swift in Sources */,
+				E33CE4AFB9F0A5578EA1CCFD /* Extensions.swift in Sources */,
+				C2A23248DF9BAE6854B27A2E /* HotKeyManager.swift in Sources */,
+				04DC817A43BB23B2CBBB5C93 /* KeyCodeMapping.swift in Sources */,
+				DFAC2901946F3A5AF14C57E9 /* LoginItemManager.swift in Sources */,
+				E5417E2FF36D9805BAB35789 /* MenuBarPopoverView.swift in Sources */,
+				60347ECA68290BB83EBF8FD9 /* OnScreenZoneEditorManager.swift in Sources */,
+				98E3D07159E83589FD35E2BA /* OnScreenZoneEditorView.swift in Sources */,
+				A0E1620FA78ED92B51C35E2D /* ScreenManager.swift in Sources */,
+				F6FB218A7B7DF174E83AD4E1 /* ShortcutRecorderView.swift in Sources */,
+				C6F97A1C530565F96377BC75 /* SnapperApp.swift in Sources */,
+				4E6009368D1F3B7462B4AF34 /* WindowManager.swift in Sources */,
+				82AEEBEF9B73AB839D832799 /* ZoneDetailView.swift in Sources */,
+				DB98F7CFEFF59965862D4976 /* ZoneModel.swift in Sources */,
+				32B33DC96065FE3A829FB0B4 /* ZoneOverlayView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0C8943C82B171B3A0D6565AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		33E5A729BF86CC95BF6780DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Snapper/Snapper.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Snapper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.snapper.app;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		48A3DB5FBA866FC72C5A3C73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		DAD8073F393695D2E137CEDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Snapper/Snapper.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Snapper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.snapper.app;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C2CB0B358D0349B72E0074FC /* Build configuration list for PBXProject "Snapper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C8943C82B171B3A0D6565AE /* Debug */,
+				48A3DB5FBA866FC72C5A3C73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		EBA07DE2013CE259BD7200DE /* Build configuration list for PBXNativeTarget "Snapper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33E5A729BF86CC95BF6780DC /* Debug */,
+				DAD8073F393695D2E137CEDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9C21FDC6B12C83893AF3E756 /* Project object */;
+}
