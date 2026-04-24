@@ -13,7 +13,7 @@ final class AppState: ObservableObject {
                 syncLaunchAtLoginState()
             }
 
-            hotKeyRegistrationWarnings = hotKeyManager.registerAll(zones: config.zones)
+            refreshHotKeyRegistrations()
         }
     }
 
@@ -21,6 +21,7 @@ final class AppState: ObservableObject {
     @Published var selectedZoneID: UUID?
     @Published var activeAlert: AppAlertMessage?
     @Published var hotKeyRegistrationWarnings: [UUID: String] = [:]
+    @Published var cycleHotKeyRegistrationWarning: String?
     @Published var showAccessibilityPrompt: Bool = false
     @Published var showLaunchAtLoginPrompt: Bool = false
     @Published private(set) var accessibilityEnabled: Bool = false
@@ -36,6 +37,7 @@ final class AppState: ObservableObject {
     private let onScreenZoneEditorManager = OnScreenZoneEditorManager.shared
 
     private var hasCompletedLaunchSetup = false
+    private var lastCycledZoneID: UUID?
 
     private init() {
         config = configurationManager.load()
@@ -46,6 +48,12 @@ final class AppState: ObservableObject {
         hotKeyManager.setAction { [weak self] zoneID in
             Task { @MainActor in
                 self?.snap(zoneID: zoneID)
+            }
+        }
+
+        hotKeyManager.setCycleAction { [weak self] in
+            Task { @MainActor in
+                self?.cycleToNextZoneAndSnap()
             }
         }
 
@@ -65,7 +73,7 @@ final class AppState: ObservableObject {
         }
         hasCompletedLaunchSetup = true
 
-        hotKeyRegistrationWarnings = hotKeyManager.registerAll(zones: config.zones)
+        refreshHotKeyRegistrations()
 
         if !config.hasSeenAccessibilityPrompt {
             _ = requestAccessibility(prompt: true)
@@ -152,6 +160,7 @@ final class AppState: ObservableObject {
         let zone = SnapperZone(
             name: nextZoneName(),
             screenIndex: screenIndex,
+            screenDisplayID: screens[screenIndex].displayID,
             rect: normalizedRect.clampedUnitRect
         )
 
@@ -165,7 +174,18 @@ final class AppState: ObservableObject {
         }
 
         let inferredScreen = selectedZoneID
-            .flatMap { id in config.zones.first(where: { $0.id == id })?.screenIndex }
+            .flatMap { id in
+                guard let zone = config.zones.first(where: { $0.id == id }) else {
+                    return nil
+                }
+
+                if let displayID = zone.screenDisplayID,
+                   let mappedIndex = screens.first(where: { $0.displayID == displayID })?.index {
+                    return mappedIndex
+                }
+
+                return zone.screenIndex
+            }
             ?? 0
 
         let targetScreen = preferredScreen ?? inferredScreen
@@ -178,6 +198,9 @@ final class AppState: ObservableObject {
 
     func removeZone(id: UUID) {
         config.zones.removeAll { $0.id == id }
+        if lastCycledZoneID == id {
+            lastCycledZoneID = nil
+        }
         if selectedZoneID == id {
             selectedZoneID = config.zones.first?.id
         }
@@ -197,7 +220,28 @@ final class AppState: ObservableObject {
             return
         }
 
+        if let shortcut, config.cycleShortcut == shortcut {
+            activeAlert = AppAlertMessage(
+                title: "Shortcut Conflict",
+                message: "Cycle shortcut already uses \(shortcut.displayString)."
+            )
+            return
+        }
+
         config.zones[index].shortcut = shortcut
+    }
+
+    func assignCycleShortcut(_ shortcut: HotKey?) {
+        if let shortcut,
+           let conflictingZone = config.zones.first(where: { $0.shortcut == shortcut }) {
+            activeAlert = AppAlertMessage(
+                title: "Shortcut Conflict",
+                message: "\(conflictingZone.name) already uses \(shortcut.displayString)."
+            )
+            return
+        }
+
+        config.cycleShortcut = shortcut
     }
 
     func registrationWarning(for zoneID: UUID) -> String? {
@@ -231,21 +275,51 @@ final class AppState: ObservableObject {
         }
     }
 
+    func cycleToNextZoneAndSnap() {
+        guard !config.zones.isEmpty else {
+            return
+        }
+
+        let nextZone: SnapperZone
+        if let lastCycledZoneID,
+           let currentIndex = config.zones.firstIndex(where: { $0.id == lastCycledZoneID }) {
+            let nextIndex = (currentIndex + 1) % config.zones.count
+            nextZone = config.zones[nextIndex]
+        } else {
+            nextZone = config.zones[0]
+        }
+
+        lastCycledZoneID = nextZone.id
+        snap(zoneID: nextZone.id)
+    }
+
     private func reconcileZoneScreenIndexesIfNeeded() {
         guard !screens.isEmpty else {
             return
         }
 
-        let upperBound = screens.count - 1
         var updated = config
         var didChange = false
 
         for index in updated.zones.indices {
-            let current = updated.zones[index].screenIndex
-            let clamped = current.clamped(to: 0 ... upperBound)
-            if current != clamped {
-                updated.zones[index].screenIndex = clamped
-                didChange = true
+            var zone = updated.zones[index]
+
+            if let displayID = zone.screenDisplayID,
+               let matchingScreen = screens.first(where: { $0.displayID == displayID }) {
+                if zone.screenIndex != matchingScreen.index {
+                    zone.screenIndex = matchingScreen.index
+                    didChange = true
+                }
+            } else if screens.indices.contains(zone.screenIndex) {
+                let resolvedDisplayID = screens[zone.screenIndex].displayID
+                if zone.screenDisplayID != resolvedDisplayID {
+                    zone.screenDisplayID = resolvedDisplayID
+                    didChange = true
+                }
+            }
+
+            if updated.zones[index] != zone {
+                updated.zones[index] = zone
             }
         }
 
@@ -284,5 +358,14 @@ final class AppState: ObservableObject {
                 config = updated
             }
         }
+    }
+
+    private func refreshHotKeyRegistrations() {
+        let registrationResult = hotKeyManager.registerAll(
+            zones: config.zones,
+            cycleShortcut: config.cycleShortcut
+        )
+        hotKeyRegistrationWarnings = registrationResult.zoneWarnings
+        cycleHotKeyRegistrationWarning = registrationResult.cycleWarning
     }
 }

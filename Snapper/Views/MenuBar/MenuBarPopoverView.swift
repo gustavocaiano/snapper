@@ -18,6 +18,30 @@ struct MenuBarPopoverView: View {
 
             zoneList
 
+            Button("Cycle Zones & Snap") {
+                performSnapAction {
+                    appState.cycleToNextZoneAndSnap()
+                }
+            }
+            .disabled(appState.config.zones.isEmpty)
+
+            HStack {
+                Text("Cycle Shortcut")
+                    .font(.subheadline)
+                Spacer()
+                ShortcutRecorderView(
+                    value: appState.config.cycleShortcut,
+                    onChange: appState.assignCycleShortcut
+                )
+            }
+
+            if let warning = appState.cycleHotKeyRegistrationWarning {
+                Text(warning)
+                    .font(.caption)
+                    .foregroundStyle(.orange)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+
             Divider()
 
             Button(appState.isOnScreenEditorVisible ? "Close On-Screen Editor" : "Edit Zones On Screen…") {
@@ -76,7 +100,9 @@ struct MenuBarPopoverView: View {
                 VStack(alignment: .leading, spacing: 6) {
                     ForEach(appState.config.zones) { zone in
                         Button {
-                            appState.snap(zoneID: zone.id)
+                            performSnapAction {
+                                appState.snap(zoneID: zone.id)
+                            }
                         } label: {
                             HStack {
                                 Text(zone.name)
@@ -92,6 +118,13 @@ struct MenuBarPopoverView: View {
                     }
                 }
             }
+        }
+    }
+
+    private func performSnapAction(_ action: @escaping () -> Void) {
+        dismiss()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.12) {
+            action()
         }
     }
 

@@ -28,6 +28,9 @@ struct ZoneDetailView: View {
                     Text(screen.name).tag(screen.index)
                 }
             }
+            .onChange(of: zone.screenIndex) { newScreenIndex in
+                zone.screenDisplayID = screens.first(where: { $0.index == newScreenIndex })?.displayID
+            }
 
             HStack {
                 Text("Shortcut")

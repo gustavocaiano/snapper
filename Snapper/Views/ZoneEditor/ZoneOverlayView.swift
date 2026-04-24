@@ -2,6 +2,7 @@ import SwiftUI
 
 struct CrossScreenMoveTarget {
     let screenIndex: Int
+    let screenDisplayID: UInt32
     let normalizedRect: CGRect
 }
 
@@ -69,6 +70,7 @@ struct ZoneOverlayView: View {
 
                 if let target = crossScreenMoveResolver?(moved) {
                     zone.screenIndex = target.screenIndex
+                    zone.screenDisplayID = target.screenDisplayID
                     zone.rect = target.normalizedRect.clampedUnitRect
                     self.moveStartRect = nil
                     return

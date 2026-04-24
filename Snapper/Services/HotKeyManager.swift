@@ -4,24 +4,40 @@ import Foundation
 final class HotKeyManager {
     static let shared = HotKeyManager()
 
+    private enum HotKeyAction {
+        case zone(UUID)
+        case cycle
+    }
+
     private var eventRefs: [UInt32: EventHotKeyRef] = [:]
-    private var zoneIDsByEventID: [UInt32: UUID] = [:]
-    private var action: ((UUID) -> Void)?
+    private var actionsByEventID: [UInt32: HotKeyAction] = [:]
+    private var zoneAction: ((UUID) -> Void)?
+    private var cycleAction: (() -> Void)?
     private var nextEventID: UInt32 = 1
     private let signature: OSType = HotKeyManager.fourCharCode("SNPZ")
 
     private init() {}
 
     func setAction(_ action: @escaping (UUID) -> Void) {
-        self.action = action
+        zoneAction = action
+    }
+
+    func setCycleAction(_ action: @escaping () -> Void) {
+        cycleAction = action
     }
 
     func registerAll(zones: [SnapperZone]) -> [UUID: String] {
+        registerAll(zones: zones, cycleShortcut: nil).zoneWarnings
+    }
+
+    func registerAll(zones: [SnapperZone], cycleShortcut: HotKey?) -> (zoneWarnings: [UUID: String], cycleWarning: String?) {
         unregisterAll()
         nextEventID = 1
 
-        var issues: [UUID: String] = [:]
+        var zoneWarnings: [UUID: String] = [:]
+        var cycleWarning: String?
         var seenShortcuts: [HotKey: UUID] = [:]
+        var cycleConflictZoneID: UUID?
 
         for zone in zones {
             guard let shortcut = zone.shortcut else {
@@ -29,34 +45,62 @@ final class HotKeyManager {
             }
 
             if let duplicateZoneID = seenShortcuts[shortcut] {
-                issues[zone.id] = "Shortcut conflicts with another Snapper zone (\(duplicateZoneID.uuidString.prefix(8)))."
+                zoneWarnings[zone.id] = "Shortcut conflicts with another Snapper zone (\(duplicateZoneID.uuidString.prefix(8)))."
                 continue
             }
+
+            if shortcut == cycleShortcut {
+                zoneWarnings[zone.id] = "Shortcut conflicts with the cycle shortcut."
+                if cycleConflictZoneID == nil {
+                    cycleConflictZoneID = zone.id
+                }
+                continue
+            }
+
             seenShortcuts[shortcut] = zone.id
 
-            let eventID = nextEventID
-            let hotKeyID = EventHotKeyID(signature: signature, id: eventID)
-            var eventRef: EventHotKeyRef?
-
-            let status = RegisterEventHotKey(
-                shortcut.keyCode,
-                shortcut.modifiers,
-                hotKeyID,
-                GetApplicationEventTarget(),
-                0,
-                &eventRef
-            )
-
-            if status == noErr, let eventRef {
-                eventRefs[eventID] = eventRef
-                zoneIDsByEventID[eventID] = zone.id
-                nextEventID += 1
-            } else {
-                issues[zone.id] = registrationErrorMessage(status: status)
+            let registrationWarning = registerShortcut(shortcut, action: .zone(zone.id))
+            if let registrationWarning {
+                zoneWarnings[zone.id] = registrationWarning
             }
         }
 
-        return issues
+        if let cycleShortcut {
+            if let zoneID = cycleConflictZoneID ?? seenShortcuts[cycleShortcut] {
+                cycleWarning = "Cycle shortcut conflicts with Snapper zone (\(zoneID.uuidString.prefix(8)))."
+            } else {
+                let registrationWarning = registerShortcut(cycleShortcut, action: .cycle)
+                if let registrationWarning {
+                    cycleWarning = registrationWarning
+                }
+            }
+        }
+
+        return (zoneWarnings, cycleWarning)
+    }
+
+    private func registerShortcut(_ shortcut: HotKey, action: HotKeyAction) -> String? {
+        let eventID = nextEventID
+        let hotKeyID = EventHotKeyID(signature: signature, id: eventID)
+        var eventRef: EventHotKeyRef?
+
+        let status = RegisterEventHotKey(
+            shortcut.keyCode,
+            shortcut.modifiers,
+            hotKeyID,
+            GetApplicationEventTarget(),
+            0,
+            &eventRef
+        )
+
+        if status == noErr, let eventRef {
+            eventRefs[eventID] = eventRef
+            actionsByEventID[eventID] = action
+            nextEventID += 1
+            return nil
+        }
+
+        return registrationErrorMessage(status: status)
     }
 
     func unregisterAll() {
@@ -65,15 +109,20 @@ final class HotKeyManager {
         }
 
         eventRefs.removeAll()
-        zoneIDsByEventID.removeAll()
+        actionsByEventID.removeAll()
     }
 
     func handleHotKeyEvent(id: UInt32) {
-        guard let zoneID = zoneIDsByEventID[id] else {
+        guard let action = actionsByEventID[id] else {
             return
         }
 
-        action?(zoneID)
+        switch action {
+        case .zone(let zoneID):
+            zoneAction?(zoneID)
+        case .cycle:
+            cycleAction?()
+        }
     }
 
     private func registrationErrorMessage(status: OSStatus) -> String {

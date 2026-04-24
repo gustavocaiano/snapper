@@ -6,6 +6,7 @@ enum WindowManagerError: LocalizedError {
     case focusedApplicationUnavailable
     case focusedWindowUnavailable
     case invalidScreenIndex
+    case targetDisplayUnavailable
     case cannotSetWindowPosition
     case cannotSetWindowSize
 
@@ -19,6 +20,8 @@ enum WindowManagerError: LocalizedError {
             return "Snapper could not find a focused window to move."
         case .invalidScreenIndex:
             return "The target screen is no longer available."
+        case .targetDisplayUnavailable:
+            return "The zone's display is unavailable. Reconnect the display or reassign the zone to an available screen."
         case .cannotSetWindowPosition:
             return "Snapper could not update the window position."
         case .cannotSetWindowSize:
@@ -38,11 +41,19 @@ final class WindowManager {
         }
 
         let screens = NSScreen.screens
-        guard screens.indices.contains(zone.screenIndex) else {
-            throw WindowManagerError.invalidScreenIndex
-        }
+        let screen: NSScreen
 
-        let screen = screens[zone.screenIndex]
+        if let displayID = zone.screenDisplayID {
+            guard let matchedScreen = screens.first(where: { $0.displayID == displayID }) else {
+                throw WindowManagerError.targetDisplayUnavailable
+            }
+            screen = matchedScreen
+        } else {
+            guard screens.indices.contains(zone.screenIndex) else {
+                throw WindowManagerError.invalidScreenIndex
+            }
+            screen = screens[zone.screenIndex]
+        }
         let targetFrame = targetWindowFrame(for: zone.rect.clampedUnitRect, in: screen.frame)
 
         let systemElement = AXUIElementCreateSystemWide()
@@ -81,16 +92,6 @@ final class WindowManager {
             throw WindowManagerError.cannotSetWindowSize
         }
 
-        let positionStatus = AXUIElementSetAttributeValue(
-            focusedWindow,
-            kAXPositionAttribute as CFString,
-            positionValue
-        )
-
-        guard positionStatus == .success else {
-            throw WindowManagerError.cannotSetWindowPosition
-        }
-
         let sizeStatus = AXUIElementSetAttributeValue(
             focusedWindow,
             kAXSizeAttribute as CFString,
@@ -100,11 +101,22 @@ final class WindowManager {
         guard sizeStatus == .success else {
             throw WindowManagerError.cannotSetWindowSize
         }
+
+        let positionStatus = AXUIElementSetAttributeValue(
+            focusedWindow,
+            kAXPositionAttribute as CFString,
+            positionValue
+        )
+
+        guard positionStatus == .success else {
+            throw WindowManagerError.cannotSetWindowPosition
+        }
     }
 
     private func targetWindowFrame(for rect: CGRect, in visibleFrame: CGRect) -> CGRect {
         let x = visibleFrame.minX + (rect.minX * visibleFrame.width)
-        let y = visibleFrame.maxY - ((rect.minY + rect.height) * visibleFrame.height)
+        let targetMinYNormalized = 1 - rect.minY - rect.height
+        let y = visibleFrame.minY + (targetMinYNormalized * visibleFrame.height)
         let width = visibleFrame.width * rect.width
         let height = visibleFrame.height * rect.height
 

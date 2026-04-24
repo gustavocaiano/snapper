@@ -1,6 +1,6 @@
 .DS_Store
 .build/
-
+.opencode/
 # Xcode user data
 xcuserdata/
 *.xcuserstate

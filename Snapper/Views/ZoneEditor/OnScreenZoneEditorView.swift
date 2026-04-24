@@ -243,6 +243,7 @@ struct OnScreenZoneEditorView: View {
 
         return CrossScreenMoveTarget(
             screenIndex: targetScreen.index,
+            screenDisplayID: targetScreen.displayID,
             normalizedRect: targetRect.normalized(in: targetCanvas)
         )
     }
