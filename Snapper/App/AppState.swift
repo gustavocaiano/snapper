@@ -84,6 +84,7 @@ final class AppState: ObservableObject {
     }
 
     func reloadScreens() {
+        ShiftDragSnapController.shared.cancelActiveSession()
         screens = screenManager.currentScreens()
         reconcileZoneScreenIndexesIfNeeded()
 

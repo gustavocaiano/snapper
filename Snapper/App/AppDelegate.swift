@@ -25,15 +25,27 @@ private let snapZoneHotKeyHandler: EventHandlerUPP = { _, eventRef, _ in
     return noErr
 }
 
+@MainActor
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private var hotKeyEventHandlerRef: EventHandlerRef?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        guard !isRunningTests else {
+            return
+        }
+
         installHotKeyHandlerIfNeeded()
         AppState.shared.finishLaunchSetup()
+        ShiftDragSnapController.shared.start(appState: AppState.shared)
     }
 
     func applicationWillTerminate(_ notification: Notification) {
+        guard !isRunningTests else {
+            return
+        }
+
+        ShiftDragSnapController.shared.stop()
+        ZoneSnapOverlayManager.shared.dismiss()
         OnScreenZoneEditorManager.shared.dismiss()
         HotKeyManager.shared.unregisterAll()
     }
@@ -60,5 +72,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         if status != noErr {
             return
         }
+    }
+
+    private var isRunningTests: Bool {
+        ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
     }
 }

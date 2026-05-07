@@ -37,3 +37,24 @@ targets:
       - sdk: Carbon.framework
       - sdk: ServiceManagement.framework
       - sdk: ApplicationServices.framework
+  SnapperTests:
+    type: bundle.unit-test
+    platform: macOS
+    deploymentTarget: "13.0"
+    sources:
+      - path: SnapperTests
+    dependencies:
+      - target: Snapper
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.snapper.app.tests
+        GENERATE_INFOPLIST_FILE: YES
+schemes:
+  Snapper:
+    build:
+      targets:
+        Snapper: all
+        SnapperTests: [test]
+    test:
+      targets:
+        - SnapperTests

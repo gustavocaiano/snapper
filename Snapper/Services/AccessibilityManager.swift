@@ -1,6 +1,12 @@
 import AppKit
 import ApplicationServices
 
+@MainActor
+protocol AccessibilityChecking: AnyObject {
+    func isTrusted() -> Bool
+}
+
+@MainActor
 final class AccessibilityManager {
     static let shared = AccessibilityManager()
 
@@ -27,3 +33,5 @@ final class AccessibilityManager {
         NSWorkspace.shared.open(url)
     }
 }
+
+extension AccessibilityManager: AccessibilityChecking {}

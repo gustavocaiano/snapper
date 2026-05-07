@@ -13,43 +13,68 @@
 		4E6009368D1F3B7462B4AF34 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABEBD19A55FDF6C33E3062 /* WindowManager.swift */; };
 		53FD18C24C2395003F8BC04F /* AccessibilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCD8B04E37874367070E9 /* AccessibilityManager.swift */; };
 		60347ECA68290BB83EBF8FD9 /* OnScreenZoneEditorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D7A3CAD5D68FDAF0DBE2BF /* OnScreenZoneEditorManager.swift */; };
+		7188DA51FDABFE47615FD78D /* ZoneGeometryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1E76081D92BE6E17B144C /* ZoneGeometryTests.swift */; };
 		8038ABE0C74C145C037EEB6B /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D93345B8AAAE9508B683556 /* AppState.swift */; };
 		82AEEBEF9B73AB839D832799 /* ZoneDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998CACD88ABE52E167E3F514 /* ZoneDetailView.swift */; };
 		98E3D07159E83589FD35E2BA /* OnScreenZoneEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D28535B428D816CF7E9DD4A /* OnScreenZoneEditorView.swift */; };
 		9CF7A45836A74CEE4438C910 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FD4117487F8F2B2B685CD6 /* ApplicationServices.framework */; };
 		A0E1620FA78ED92B51C35E2D /* ScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55BDE9D2341A5DCFC25FBB5 /* ScreenManager.swift */; };
+		A3D49DCB691DEB1E280B3C00 /* ZoneSnapOverlayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F08E81B8EAB0B086FBA46E /* ZoneSnapOverlayManager.swift */; };
 		A44B0C3A42A21AE5EA035BE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0A9DFEA82D0DF25D12F490 /* AppDelegate.swift */; };
 		AD4FDD90F4EB036790A80BC8 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E91E8317539FF640F0B1C9B /* Carbon.framework */; };
+		B1172485D2CC4C7A2AF96D12 /* ShiftDragSnapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A9779B6F66DD09745B3E84 /* ShiftDragSnapController.swift */; };
 		C2A23248DF9BAE6854B27A2E /* HotKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2423F911155657A6D14419B0 /* HotKeyManager.swift */; };
 		C6F97A1C530565F96377BC75 /* SnapperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE4911DF394C1869585821 /* SnapperApp.swift */; };
+		CB77729039FC8FE805243810 /* ZoneGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A74082C76D5325D29367923 /* ZoneGeometry.swift */; };
 		D113081C54C45039E4C478D7 /* AccessibilityPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FA87F14CA6B21E1B3E77C2 /* AccessibilityPromptView.swift */; };
+		D458D9D4D2B0ECA60A7D2E46 /* ShiftDragSnapControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED05A2764AA9F830E9F61C9 /* ShiftDragSnapControllerTests.swift */; };
 		DB98F7CFEFF59965862D4976 /* ZoneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A903648F15CBD6150B65E /* ZoneModel.swift */; };
 		DFAC2901946F3A5AF14C57E9 /* LoginItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF8EE7F94142CEBE57D7FB4 /* LoginItemManager.swift */; };
+		E0CBBADBB3E690566A11B80F /* SnapPreviewOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEF5ECBD7CA1A7F8CFD0AE7 /* SnapPreviewOverlayView.swift */; };
 		E33CE4AFB9F0A5578EA1CCFD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC76D10937C90F365A334FF /* Extensions.swift */; };
 		E5417E2FF36D9805BAB35789 /* MenuBarPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC35CD07BB1D581E64CCEA71 /* MenuBarPopoverView.swift */; };
 		F325F6CAA9A179825BAB7A14 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822609A48299EA8B8AFA0DC8 /* ConfigurationManager.swift */; };
+		F6950AD25CFE62186AAAAA05 /* GlobalDragEventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A13EC7648FF06F0F8BAC324 /* GlobalDragEventMonitor.swift */; };
 		F6FB218A7B7DF174E83AD4E1 /* ShortcutRecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F00F5100EAD99E295264E2 /* ShortcutRecorderView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		FD38FB14B5E51674AF6FCC51 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9C21FDC6B12C83893AF3E756 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 770B5204EBE266D5DD99B366;
+			remoteInfo = Snapper;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0282596CA8A93DD2ACD52EDF /* KeyCodeMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCodeMapping.swift; sourceTree = "<group>"; };
+		09B1E76081D92BE6E17B144C /* ZoneGeometryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneGeometryTests.swift; sourceTree = "<group>"; };
 		0D93345B8AAAE9508B683556 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		21FD4117487F8F2B2B685CD6 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		2423F911155657A6D14419B0 /* HotKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKeyManager.swift; sourceTree = "<group>"; };
+		29DF80E71FA61E5E11E78DB7 /* SnapperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A13EC7648FF06F0F8BAC324 /* GlobalDragEventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalDragEventMonitor.swift; sourceTree = "<group>"; };
 		2DC76D10937C90F365A334FF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		382E1D23083033DB562E4560 /* Snapper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Snapper.entitlements; sourceTree = "<group>"; };
+		3A74082C76D5325D29367923 /* ZoneGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneGeometry.swift; sourceTree = "<group>"; };
 		40BE9EE10BEF49D1DCA0F3C5 /* Snapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44A03BE7189A2B155DD982CA /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		44F08E81B8EAB0B086FBA46E /* ZoneSnapOverlayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneSnapOverlayManager.swift; sourceTree = "<group>"; };
 		56F00F5100EAD99E295264E2 /* ShortcutRecorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutRecorderView.swift; sourceTree = "<group>"; };
 		578078843FA532A83EBA1C53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5E91E8317539FF640F0B1C9B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		65FA87F14CA6B21E1B3E77C2 /* AccessibilityPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityPromptView.swift; sourceTree = "<group>"; };
+		6AEF5ECBD7CA1A7F8CFD0AE7 /* SnapPreviewOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapPreviewOverlayView.swift; sourceTree = "<group>"; };
+		6ED05A2764AA9F830E9F61C9 /* ShiftDragSnapControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftDragSnapControllerTests.swift; sourceTree = "<group>"; };
 		73D7A3CAD5D68FDAF0DBE2BF /* OnScreenZoneEditorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnScreenZoneEditorManager.swift; sourceTree = "<group>"; };
 		7D0A9DFEA82D0DF25D12F490 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D28535B428D816CF7E9DD4A /* OnScreenZoneEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnScreenZoneEditorView.swift; sourceTree = "<group>"; };
 		822609A48299EA8B8AFA0DC8 /* ConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
 		88FE4911DF394C1869585821 /* SnapperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapperApp.swift; sourceTree = "<group>"; };
 		90ABEBD19A55FDF6C33E3062 /* WindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
+		96A9779B6F66DD09745B3E84 /* ShiftDragSnapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftDragSnapController.swift; sourceTree = "<group>"; };
 		998CACD88ABE52E167E3F514 /* ZoneDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneDetailView.swift; sourceTree = "<group>"; };
 		AAF8EE7F94142CEBE57D7FB4 /* LoginItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginItemManager.swift; sourceTree = "<group>"; };
 		ADB77EEC21AA9A0467947AAB /* ZoneOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneOverlayView.swift; sourceTree = "<group>"; };
@@ -77,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				40BE9EE10BEF49D1DCA0F3C5 /* Snapper.app */,
+				29DF80E71FA61E5E11E78DB7 /* SnapperTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -86,11 +112,14 @@
 			children = (
 				E47FCD8B04E37874367070E9 /* AccessibilityManager.swift */,
 				822609A48299EA8B8AFA0DC8 /* ConfigurationManager.swift */,
+				2A13EC7648FF06F0F8BAC324 /* GlobalDragEventMonitor.swift */,
 				2423F911155657A6D14419B0 /* HotKeyManager.swift */,
 				AAF8EE7F94142CEBE57D7FB4 /* LoginItemManager.swift */,
 				73D7A3CAD5D68FDAF0DBE2BF /* OnScreenZoneEditorManager.swift */,
 				D55BDE9D2341A5DCFC25FBB5 /* ScreenManager.swift */,
+				96A9779B6F66DD09745B3E84 /* ShiftDragSnapController.swift */,
 				90ABEBD19A55FDF6C33E3062 /* WindowManager.swift */,
+				44F08E81B8EAB0B086FBA46E /* ZoneSnapOverlayManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -109,6 +138,7 @@
 				74CBB068DECA6B3DE45E77E5 /* MenuBar */,
 				774618E7F4AE1A638B48EA3D /* Onboarding */,
 				434DE3E617CD319826334A91 /* ShortcutRecorder */,
+				F92650EE07DF3D69851FE16D /* SnapPreview */,
 				5CA17C97F5D6985FF96CF593 /* ZoneEditor */,
 			);
 			path = Views;
@@ -152,9 +182,19 @@
 			isa = PBXGroup;
 			children = (
 				CBD86CFF38B0F7B91294A78D /* Snapper */,
+				BA4A3F0AC735707C66DF051D /* SnapperTests */,
 				BC38DB4FBD5A0BD5D9BE20BF /* Frameworks */,
 				39B66CEE8EC32FBF47CADDFD /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		BA4A3F0AC735707C66DF051D /* SnapperTests */ = {
+			isa = PBXGroup;
+			children = (
+				6ED05A2764AA9F830E9F61C9 /* ShiftDragSnapControllerTests.swift */,
+				09B1E76081D92BE6E17B144C /* ZoneGeometryTests.swift */,
+			);
+			path = SnapperTests;
 			sourceTree = "<group>";
 		};
 		BC38DB4FBD5A0BD5D9BE20BF /* Frameworks */ = {
@@ -196,11 +236,20 @@
 			children = (
 				2DC76D10937C90F365A334FF /* Extensions.swift */,
 				0282596CA8A93DD2ACD52EDF /* KeyCodeMapping.swift */,
+				3A74082C76D5325D29367923 /* ZoneGeometry.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		"TEMP_D43B49DB-B0B5-4409-8904-59ED9A46259C" /* Resources */ = {
+		F92650EE07DF3D69851FE16D /* SnapPreview */ = {
+			isa = PBXGroup;
+			children = (
+				6AEF5ECBD7CA1A7F8CFD0AE7 /* SnapPreviewOverlayView.swift */,
+			);
+			path = SnapPreview;
+			sourceTree = "<group>";
+		};
+		"TEMP_2D311589-214D-4FCE-9358-8B3F161BFDF9" /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -228,6 +277,24 @@
 			productReference = 40BE9EE10BEF49D1DCA0F3C5 /* Snapper.app */;
 			productType = "com.apple.product-type.application";
 		};
+		92CA686A98A93E2F76FF3973 /* SnapperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4E6DE9B9011C189E12546D55 /* Build configuration list for PBXNativeTarget "SnapperTests" */;
+			buildPhases = (
+				5BF50EEDBF7C44FDA365F6B8 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F7AA69A7AEBA833DF7F19F57 /* PBXTargetDependency */,
+			);
+			name = SnapperTests;
+			packageProductDependencies = (
+			);
+			productName = SnapperTests;
+			productReference = 29DF80E71FA61E5E11E78DB7 /* SnapperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -240,10 +307,12 @@
 					770B5204EBE266D5DD99B366 = {
 						ProvisioningStyle = Automatic;
 					};
+					92CA686A98A93E2F76FF3973 = {
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = C2CB0B358D0349B72E0074FC /* Build configuration list for PBXProject "Snapper" */;
-			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -253,15 +322,26 @@
 			mainGroup = AAA7E2168F538A29330F95E5;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
+			productRefGroup = 39B66CEE8EC32FBF47CADDFD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				770B5204EBE266D5DD99B366 /* Snapper */,
+				92CA686A98A93E2F76FF3973 /* SnapperTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5BF50EEDBF7C44FDA365F6B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D458D9D4D2B0ECA60A7D2E46 /* ShiftDragSnapControllerTests.swift in Sources */,
+				7188DA51FDABFE47615FD78D /* ZoneGeometryTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EAE0B8C32F1B4EF867727C4E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -272,6 +352,7 @@
 				8038ABE0C74C145C037EEB6B /* AppState.swift in Sources */,
 				F325F6CAA9A179825BAB7A14 /* ConfigurationManager.swift in Sources */,
 				E33CE4AFB9F0A5578EA1CCFD /* Extensions.swift in Sources */,
+				F6950AD25CFE62186AAAAA05 /* GlobalDragEventMonitor.swift in Sources */,
 				C2A23248DF9BAE6854B27A2E /* HotKeyManager.swift in Sources */,
 				04DC817A43BB23B2CBBB5C93 /* KeyCodeMapping.swift in Sources */,
 				DFAC2901946F3A5AF14C57E9 /* LoginItemManager.swift in Sources */,
@@ -279,16 +360,28 @@
 				60347ECA68290BB83EBF8FD9 /* OnScreenZoneEditorManager.swift in Sources */,
 				98E3D07159E83589FD35E2BA /* OnScreenZoneEditorView.swift in Sources */,
 				A0E1620FA78ED92B51C35E2D /* ScreenManager.swift in Sources */,
+				B1172485D2CC4C7A2AF96D12 /* ShiftDragSnapController.swift in Sources */,
 				F6FB218A7B7DF174E83AD4E1 /* ShortcutRecorderView.swift in Sources */,
+				E0CBBADBB3E690566A11B80F /* SnapPreviewOverlayView.swift in Sources */,
 				C6F97A1C530565F96377BC75 /* SnapperApp.swift in Sources */,
 				4E6009368D1F3B7462B4AF34 /* WindowManager.swift in Sources */,
 				82AEEBEF9B73AB839D832799 /* ZoneDetailView.swift in Sources */,
+				CB77729039FC8FE805243810 /* ZoneGeometry.swift in Sources */,
 				DB98F7CFEFF59965862D4976 /* ZoneModel.swift in Sources */,
 				32B33DC96065FE3A829FB0B4 /* ZoneOverlayView.swift in Sources */,
+				A3D49DCB691DEB1E280B3C00 /* ZoneSnapOverlayManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F7AA69A7AEBA833DF7F19F57 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 770B5204EBE266D5DD99B366 /* Snapper */;
+			targetProxy = FD38FB14B5E51674AF6FCC51 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0C8943C82B171B3A0D6565AE /* Debug */ = {
@@ -352,6 +445,24 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		3357D422C64B11DB0CB1D7CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.snapper.app.tests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Snapper.app/Contents/MacOS/Snapper";
 			};
 			name = Debug;
 		};
@@ -433,6 +544,24 @@
 			};
 			name = Release;
 		};
+		BAE28D01415383841E48D67B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.snapper.app.tests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Snapper.app/Contents/MacOS/Snapper";
+			};
+			name = Release;
+		};
 		DAD8073F393695D2E137CEDC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -457,6 +586,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4E6DE9B9011C189E12546D55 /* Build configuration list for PBXNativeTarget "SnapperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3357D422C64B11DB0CB1D7CB /* Debug */,
+				BAE28D01415383841E48D67B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		C2CB0B358D0349B72E0074FC /* Build configuration list for PBXProject "Snapper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
