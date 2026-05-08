@@ -80,8 +80,12 @@ struct MenuBarPopoverView: View {
 
     private var header: some View {
         HStack {
-            Label("Snapper", systemImage: "square.split.2x2")
-                .font(.headline)
+            HStack(spacing: 8) {
+                SnapperMarkView(size: 22, style: .brand)
+                    .accessibilityHidden(true)
+                Text("Snapper")
+                    .font(.headline)
+            }
             Spacer()
             Text("\(appState.config.zones.count) zone\(appState.config.zones.count == 1 ? "" : "s")")
                 .font(.caption)

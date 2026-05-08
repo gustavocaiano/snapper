@@ -30,6 +30,7 @@
 		D458D9D4D2B0ECA60A7D2E46 /* ShiftDragSnapControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED05A2764AA9F830E9F61C9 /* ShiftDragSnapControllerTests.swift */; };
 		DB98F7CFEFF59965862D4976 /* ZoneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A903648F15CBD6150B65E /* ZoneModel.swift */; };
 		DFAC2901946F3A5AF14C57E9 /* LoginItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF8EE7F94142CEBE57D7FB4 /* LoginItemManager.swift */; };
+		DFCA694EB2DA0E062E17E23E /* SnapperMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9924D98C3395C978D89ADE /* SnapperMarkView.swift */; };
 		E0CBBADBB3E690566A11B80F /* SnapPreviewOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEF5ECBD7CA1A7F8CFD0AE7 /* SnapPreviewOverlayView.swift */; };
 		E33CE4AFB9F0A5578EA1CCFD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC76D10937C90F365A334FF /* Extensions.swift */; };
 		E5417E2FF36D9805BAB35789 /* MenuBarPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC35CD07BB1D581E64CCEA71 /* MenuBarPopoverView.swift */; };
@@ -69,6 +70,7 @@
 		6AEF5ECBD7CA1A7F8CFD0AE7 /* SnapPreviewOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapPreviewOverlayView.swift; sourceTree = "<group>"; };
 		6ED05A2764AA9F830E9F61C9 /* ShiftDragSnapControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftDragSnapControllerTests.swift; sourceTree = "<group>"; };
 		73D7A3CAD5D68FDAF0DBE2BF /* OnScreenZoneEditorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnScreenZoneEditorManager.swift; sourceTree = "<group>"; };
+		7B9924D98C3395C978D89ADE /* SnapperMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapperMarkView.swift; sourceTree = "<group>"; };
 		7D0A9DFEA82D0DF25D12F490 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D28535B428D816CF7E9DD4A /* OnScreenZoneEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnScreenZoneEditorView.swift; sourceTree = "<group>"; };
 		822609A48299EA8B8AFA0DC8 /* ConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			children = (
 				74CBB068DECA6B3DE45E77E5 /* MenuBar */,
 				774618E7F4AE1A638B48EA3D /* Onboarding */,
+				D2E7ED0D73343563D5B70F03 /* Shared */,
 				434DE3E617CD319826334A91 /* ShortcutRecorder */,
 				F92650EE07DF3D69851FE16D /* SnapPreview */,
 				5CA17C97F5D6985FF96CF593 /* ZoneEditor */,
@@ -231,6 +234,14 @@
 			path = Snapper;
 			sourceTree = "<group>";
 		};
+		D2E7ED0D73343563D5B70F03 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				7B9924D98C3395C978D89ADE /* SnapperMarkView.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		E2FD39819799514E33305E6E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,7 +260,7 @@
 			path = SnapPreview;
 			sourceTree = "<group>";
 		};
-		"TEMP_2D311589-214D-4FCE-9358-8B3F161BFDF9" /* Resources */ = {
+		"TEMP_81C2E7F0-E5AE-46E6-92BF-9233C8196DD5" /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -364,6 +375,7 @@
 				F6FB218A7B7DF174E83AD4E1 /* ShortcutRecorderView.swift in Sources */,
 				E0CBBADBB3E690566A11B80F /* SnapPreviewOverlayView.swift in Sources */,
 				C6F97A1C530565F96377BC75 /* SnapperApp.swift in Sources */,
+				DFCA694EB2DA0E062E17E23E /* SnapperMarkView.swift in Sources */,
 				4E6009368D1F3B7462B4AF34 /* WindowManager.swift in Sources */,
 				82AEEBEF9B73AB839D832799 /* ZoneDetailView.swift in Sources */,
 				CB77729039FC8FE805243810 /* ZoneGeometry.swift in Sources */,

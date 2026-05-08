@@ -28,6 +28,7 @@ SOURCES=(
   "$ROOT_DIR/Snapper/Views/MenuBar/MenuBarPopoverView.swift"
   "$ROOT_DIR/Snapper/Views/Onboarding/AccessibilityPromptView.swift"
   "$ROOT_DIR/Snapper/Views/ShortcutRecorder/ShortcutRecorderView.swift"
+  "$ROOT_DIR/Snapper/Views/Shared/SnapperMarkView.swift"
   "$ROOT_DIR/Snapper/Views/SnapPreview/SnapPreviewOverlayView.swift"
   "$ROOT_DIR/Snapper/Views/ZoneEditor/ZoneDetailView.swift"
   "$ROOT_DIR/Snapper/Views/ZoneEditor/OnScreenZoneEditorView.swift"

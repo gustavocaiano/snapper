@@ -88,8 +88,12 @@ struct OnScreenZoneEditorView: View {
     private func inspector(maxHeight: CGFloat) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
-                Label("Snapper Zones", systemImage: "square.split.2x2")
-                    .font(.headline)
+                HStack(spacing: 8) {
+                    SnapperMarkView(size: 22, style: .brand)
+                        .accessibilityHidden(true)
+                    Text("Snapper Zones")
+                        .font(.headline)
+                }
 
                 Spacer()
 

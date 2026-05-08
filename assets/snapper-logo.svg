@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Snapper logo</title>
+  <desc id="desc">A glowing macOS-style window snapping into a cyan grid.</desc>
+  <defs>
+    <linearGradient id="snapper-bg" x1="64" x2="448" y1="48" y2="464" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7FD0FF"/>
+      <stop offset="0.48" stop-color="#4AA8E8"/>
+      <stop offset="1" stop-color="#1C5DFF"/>
+    </linearGradient>
+    <linearGradient id="snapper-glass" x1="126" x2="390" y1="118" y2="382" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#C8F2FF" stop-opacity="0.82"/>
+    </linearGradient>
+    <radialGradient id="snapper-orb" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.34"/>
+      <stop offset="0.58" stop-color="#7FD0FF" stop-opacity="0.13"/>
+      <stop offset="1" stop-color="#05070A" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="snapper-shadow" x="-24%" y="-24%" width="148%" height="156%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="28" stdDeviation="24" flood-color="#020814" flood-opacity="0.42"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="18" flood-color="#7FD0FF" flood-opacity="0.34"/>
+    </filter>
+    <filter id="snapper-soft-glow" x="-35%" y="-35%" width="170%" height="170%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="116" fill="#05070A"/>
+  <rect x="28" y="28" width="456" height="456" rx="96" fill="url(#snapper-bg)"/>
+  <rect x="28" y="28" width="456" height="456" rx="96" fill="url(#snapper-orb)"/>
+  <g filter="url(#snapper-shadow)">
+    <rect x="104" y="116" width="304" height="280" rx="34" fill="#06101D" fill-opacity="0.78" stroke="#EAF8FF" stroke-opacity="0.28" stroke-width="6"/>
+    <path d="M104 164H408" stroke="#EAF8FF" stroke-opacity="0.22" stroke-width="6"/>
+    <circle cx="134" cy="140" r="8" fill="#FF5F57"/>
+    <circle cx="160" cy="140" r="8" fill="#FFBD2E"/>
+    <circle cx="186" cy="140" r="8" fill="#28C840"/>
+    <rect x="124" y="184" width="126" height="192" rx="20" fill="url(#snapper-glass)" filter="url(#snapper-soft-glow)"/>
+    <rect x="268" y="184" width="120" height="86" rx="18" fill="#FFFFFF" fill-opacity="0.2" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="4"/>
+    <rect x="268" y="290" width="120" height="86" rx="18" fill="#FFFFFF" fill-opacity="0.14" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="4"/>
+  </g>
+  <path d="M252 256l-34-34m34 34l-34 34m34-34H142" fill="none" stroke="#06101D" stroke-opacity="0.5" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M252 256l-34-34m34 34l-34 34m34-34H142" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

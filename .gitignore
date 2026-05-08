@@ -11,3 +11,6 @@ xcuserdata/
 
 # Temporary logs
 *.log
+
+# Generated release artifacts
+dist/
