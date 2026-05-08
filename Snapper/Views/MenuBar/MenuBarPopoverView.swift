@@ -3,6 +3,7 @@ import SwiftUI
 struct MenuBarPopoverView: View {
     @EnvironmentObject private var appState: AppState
     @Environment(\.dismiss) private var dismiss
+    @State private var showUninstallConfirmation = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -63,6 +64,10 @@ struct MenuBarPopoverView: View {
 
             Divider()
 
+            Button("Uninstall Snapper…", role: .destructive) {
+                showUninstallConfirmation = true
+            }
+
             Button("Quit Snapper") {
                 NSApp.terminate(nil)
             }
@@ -75,6 +80,18 @@ struct MenuBarPopoverView: View {
         }
         .alert(item: $appState.activeAlert) { alert in
             Alert(title: Text(alert.title), message: Text(alert.message), dismissButton: .default(Text("OK")))
+        }
+        .confirmationDialog(
+            "Uninstall Snapper?",
+            isPresented: $showUninstallConfirmation,
+            titleVisibility: .visible
+        ) {
+            Button("Uninstall and Quit", role: .destructive) {
+                appState.uninstallSnapper()
+            }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("This removes the current Snapper.app bundle, local Snapper configuration, and Accessibility trust, then quits the app.")
         }
     }
 

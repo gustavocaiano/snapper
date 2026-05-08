@@ -9,6 +9,8 @@ This file documents the local build, DMG packaging, and recommended GitHub Relea
 - `swiftc`, `codesign`, `ditto`, and `hdiutil` available on `PATH`
 - Optional: XcodeGen if you want to regenerate/open the Xcode project
 
+Snapper should not require Screen Recording permission. Screen preview backgrounds use the desktop wallpaper instead of capturing the live display framebuffer.
+
 ## Build the Local App Bundle
 
 ```bash
@@ -85,7 +87,7 @@ hdiutil detach /Volumes/Snapper
 
 ## Uninstall a Local Install
 
-If the menu bar icon is visible, quit Snapper from the menu bar menu first.
+If the menu bar icon is visible, choose **Uninstall Snapper…** from the menu bar menu. This schedules removal of the running `Snapper.app`, deletes `~/Library/Application Support/Snapper`, resets Accessibility trust for `com.snapper.app`, and quits the app.
 
 If the icon is missing, stop the app from Terminal:
 

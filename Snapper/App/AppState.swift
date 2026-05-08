@@ -35,6 +35,7 @@ final class AppState: ObservableObject {
     private let screenManager = ScreenManager.shared
     private let loginItemManager = LoginItemManager.shared
     private let onScreenZoneEditorManager = OnScreenZoneEditorManager.shared
+    private let uninstallManager = UninstallManager.shared
 
     private var hasCompletedLaunchSetup = false
     private var lastCycledZoneID: UUID?
@@ -151,6 +152,21 @@ final class AppState: ObservableObject {
         var updated = config
         updated.launchAtLogin = enabled
         config = updated
+    }
+
+    func uninstallSnapper() {
+        closeOnScreenEditor()
+        _ = loginItemManager.setEnabled(false)
+
+        do {
+            try uninstallManager.scheduleUninstall()
+            NSApp.terminate(nil)
+        } catch {
+            activeAlert = AppAlertMessage(
+                title: "Uninstall Snapper",
+                message: "Could not start uninstall: \(error.localizedDescription)"
+            )
+        }
     }
 
     func addZone(on screenIndex: Int, normalizedRect: CGRect) {

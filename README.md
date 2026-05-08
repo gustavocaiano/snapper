@@ -41,6 +41,7 @@ It is designed for people who want Mac-native window control without a heavy wor
 | **Local config** | Stores JSON config in `~/Library/Application Support/Snapper/config.json`. |
 | **Launch at Login** | Uses `SMAppService` for native login item support. |
 | **Free DMG packaging** | Builds a shareable `Snapper.dmg` without paid Apple credentials. |
+| **No Screen Recording requirement** | Screen previews use the desktop wallpaper fallback instead of capturing the display. |
 
 ## Requirements
 
@@ -117,7 +118,9 @@ Developer ID signing and notarization are the recommended future path for smooth
 
 ## Uninstall
 
-If Snapper is running, quit it from the menu bar. If the menu bar icon is missing or unreachable:
+Preferred path: open Snapper from the menu bar and choose **Uninstall Snapper…**. The app asks for confirmation, removes the running `Snapper.app`, deletes local Snapper configuration, resets Accessibility trust, and quits.
+
+If the menu bar icon is missing or unreachable:
 
 ```bash
 pkill -x Snapper || true

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		03CFF5FA0B5840EFAC468ECA /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A03BE7189A2B155DD982CA /* ServiceManagement.framework */; };
 		04DC817A43BB23B2CBBB5C93 /* KeyCodeMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0282596CA8A93DD2ACD52EDF /* KeyCodeMapping.swift */; };
+		0C6837CDCD1035A7304A2A60 /* UninstallManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9123869AB96ACBBDAE975E1A /* UninstallManager.swift */; };
 		32B33DC96065FE3A829FB0B4 /* ZoneOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB77EEC21AA9A0467947AAB /* ZoneOverlayView.swift */; };
 		4E6009368D1F3B7462B4AF34 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABEBD19A55FDF6C33E3062 /* WindowManager.swift */; };
 		53FD18C24C2395003F8BC04F /* AccessibilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCD8B04E37874367070E9 /* AccessibilityManager.swift */; };
@@ -36,7 +37,6 @@
 		E33CE4AFB9F0A5578EA1CCFD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC76D10937C90F365A334FF /* Extensions.swift */; };
 		E5417E2FF36D9805BAB35789 /* MenuBarPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC35CD07BB1D581E64CCEA71 /* MenuBarPopoverView.swift */; };
 		F325F6CAA9A179825BAB7A14 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822609A48299EA8B8AFA0DC8 /* ConfigurationManager.swift */; };
-		F3C9AB3B9963F1BBE621CB94 /* MenuBarIconTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = F717126506230BA1E036121A /* MenuBarIconTemplate.png */; };
 		F6950AD25CFE62186AAAAA05 /* GlobalDragEventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A13EC7648FF06F0F8BAC324 /* GlobalDragEventMonitor.swift */; };
 		F6FB218A7B7DF174E83AD4E1 /* ShortcutRecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F00F5100EAD99E295264E2 /* ShortcutRecorderView.swift */; };
 /* End PBXBuildFile section */
@@ -78,6 +78,7 @@
 		822609A48299EA8B8AFA0DC8 /* ConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
 		88FE4911DF394C1869585821 /* SnapperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapperApp.swift; sourceTree = "<group>"; };
 		90ABEBD19A55FDF6C33E3062 /* WindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
+		9123869AB96ACBBDAE975E1A /* UninstallManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UninstallManager.swift; sourceTree = "<group>"; };
 		96A9779B6F66DD09745B3E84 /* ShiftDragSnapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftDragSnapController.swift; sourceTree = "<group>"; };
 		998CACD88ABE52E167E3F514 /* ZoneDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneDetailView.swift; sourceTree = "<group>"; };
 		AAF8EE7F94142CEBE57D7FB4 /* LoginItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginItemManager.swift; sourceTree = "<group>"; };
@@ -87,7 +88,6 @@
 		D55BDE9D2341A5DCFC25FBB5 /* ScreenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenManager.swift; sourceTree = "<group>"; };
 		D63A903648F15CBD6150B65E /* ZoneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneModel.swift; sourceTree = "<group>"; };
 		E47FCD8B04E37874367070E9 /* AccessibilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityManager.swift; sourceTree = "<group>"; };
-		F717126506230BA1E036121A /* MenuBarIconTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBarIconTemplate.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +124,7 @@
 				73D7A3CAD5D68FDAF0DBE2BF /* OnScreenZoneEditorManager.swift */,
 				D55BDE9D2341A5DCFC25FBB5 /* ScreenManager.swift */,
 				96A9779B6F66DD09745B3E84 /* ShiftDragSnapController.swift */,
+				9123869AB96ACBBDAE975E1A /* UninstallManager.swift */,
 				90ABEBD19A55FDF6C33E3062 /* WindowManager.swift */,
 				44F08E81B8EAB0B086FBA46E /* ZoneSnapOverlayManager.swift */,
 			);
@@ -250,7 +251,6 @@
 		D7410A6D70F6FC4123A7E357 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F717126506230BA1E036121A /* MenuBarIconTemplate.png */,
 				C372A5DFD695D3622C10248B /* Snapper.icns */,
 			);
 			path = Resources;
@@ -356,7 +356,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3C9AB3B9963F1BBE621CB94 /* MenuBarIconTemplate.png in Resources */,
 				8B5293F840183ED658933E3E /* Snapper.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,6 +395,7 @@
 				E0CBBADBB3E690566A11B80F /* SnapPreviewOverlayView.swift in Sources */,
 				C6F97A1C530565F96377BC75 /* SnapperApp.swift in Sources */,
 				DFCA694EB2DA0E062E17E23E /* SnapperMarkView.swift in Sources */,
+				0C6837CDCD1035A7304A2A60 /* UninstallManager.swift in Sources */,
 				4E6009368D1F3B7462B4AF34 /* WindowManager.swift in Sources */,
 				82AEEBEF9B73AB839D832799 /* ZoneDetailView.swift in Sources */,
 				CB77729039FC8FE805243810 /* ZoneGeometry.swift in Sources */,

@@ -56,11 +56,6 @@ final class ScreenManager {
     }
 
     private func snapshot(for screen: NSScreen) -> CGImage? {
-        let displayID = screen.displayID
-        if let image = CGDisplayCreateImage(displayID) {
-            return image
-        }
-
         guard
             let wallpaperURL = NSWorkspace.shared.desktopImageURL(for: screen),
             let image = NSImage(contentsOf: wallpaperURL),

@@ -6,7 +6,7 @@ struct SnapperApp: App {
     @StateObject private var appState = AppState.shared
 
     var body: some Scene {
-        MenuBarExtra("Snapper", image: "MenuBarIconTemplate") {
+        MenuBarExtra("Snapper", systemImage: "square.split.2x2") {
             MenuBarPopoverView()
                 .environmentObject(appState)
         }
