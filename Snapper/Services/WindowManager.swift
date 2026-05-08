@@ -75,6 +75,15 @@ final class WindowManager {
         try snapWindow(focusedWindow, to: zone)
     }
 
+    func snapFocusedWindow(ofApplicationWithProcessID processID: pid_t, to zone: SnapperZone) throws {
+        guard AccessibilityManager.shared.isTrusted() else {
+            throw WindowManagerError.accessibilityUnavailable
+        }
+
+        let focusedWindow = try focusedWindow(forApplicationWithProcessID: processID)
+        try snapWindow(focusedWindow, to: zone)
+    }
+
     func captureWindow(at point: CGPoint) throws -> CapturedWindowToken {
         guard AccessibilityManager.shared.isTrusted() else {
             throw WindowManagerError.accessibilityUnavailable
@@ -84,7 +93,7 @@ final class WindowManager {
             return windowAtPoint
         }
 
-        return try focusedWindow()
+        throw WindowManagerError.windowAtPointUnavailable
     }
 
     func focusedWindow() throws -> CapturedWindowToken {
@@ -105,6 +114,34 @@ final class WindowManager {
         }
 
         return CapturedWindowToken(element: focusedWindow)
+    }
+
+    func focusedWindow(forApplicationWithProcessID processID: pid_t) throws -> CapturedWindowToken {
+        guard AccessibilityManager.shared.isTrusted() else {
+            throw WindowManagerError.accessibilityUnavailable
+        }
+
+        let applicationElement = AXUIElementCreateApplication(processID)
+
+        if let focusedWindow = optionalAXElement(
+            from: applicationElement,
+            attribute: kAXFocusedWindowAttribute as CFString
+        ), isValidWindow(focusedWindow) {
+            return CapturedWindowToken(element: focusedWindow)
+        }
+
+        if let mainWindow = optionalAXElement(
+            from: applicationElement,
+            attribute: kAXMainWindowAttribute as CFString
+        ), isValidWindow(mainWindow) {
+            return CapturedWindowToken(element: mainWindow)
+        }
+
+        if let firstValidWindow = firstValidWindow(for: applicationElement) {
+            return CapturedWindowToken(element: firstValidWindow)
+        }
+
+        throw WindowManagerError.focusedWindowUnavailable
     }
 
     func window(at point: CGPoint) throws -> CapturedWindowToken? {
@@ -228,6 +265,32 @@ final class WindowManager {
         }
 
         return unsafeBitCast(value, to: AXUIElement.self)
+    }
+
+    private func optionalAXElement(from element: AXUIElement, attribute: CFString) -> AXUIElement? {
+        var value: CFTypeRef?
+        let status = AXUIElementCopyAttributeValue(element, attribute, &value)
+
+        guard status == .success, let value else {
+            return nil
+        }
+
+        return unsafeBitCast(value, to: AXUIElement.self)
+    }
+
+    private func firstValidWindow(for applicationElement: AXUIElement) -> AXUIElement? {
+        var value: CFTypeRef?
+        let status = AXUIElementCopyAttributeValue(
+            applicationElement,
+            kAXWindowsAttribute as CFString,
+            &value
+        )
+
+        guard status == .success, let windows = value as? [AXUIElement] else {
+            return nil
+        }
+
+        return windows.first(where: isValidWindow)
     }
 
     private func containingWindow(for element: AXUIElement) -> AXUIElement? {

@@ -118,7 +118,7 @@ Recommended flow:
 ./scripts/release.sh
 ```
 
-The script asks only for the version. It then builds `dist/Snapper.dmg`, creates and pushes a `vX.Y.Z` tag, creates the GitHub Release, and uploads the DMG.
+The script asks only for the version. It then builds `dist/Snapper.dmg`, creates a versioned copy such as `dist/Snapper_v0_1_0.dmg`, creates and pushes a `vX.Y.Z` tag, creates the GitHub Release, and uploads the versioned DMG.
 
 You can also pass the version directly:
 
@@ -126,19 +126,20 @@ You can also pass the version directly:
 ./scripts/release.sh 0.1.0
 ```
 
-The stable download URL after release is:
+The landing page resolves the newest versioned DMG through the GitHub Releases API. A direct tag-specific versioned URL looks like:
 
 ```text
-https://github.com/gustavocaiano/snapper/releases/latest/download/Snapper.dmg
+https://github.com/gustavocaiano/snapper/releases/download/v0.1.0/Snapper_v0_1_0.dmg
 ```
 
 Manual `gh` equivalent:
 
 ```bash
 ./scripts/package_dmg.sh
+cp dist/Snapper.dmg dist/Snapper_v0_1_0.dmg
 git tag -a v0.1.0 -m "Snapper v0.1.0"
 git push origin v0.1.0
-gh release create v0.1.0 dist/Snapper.dmg \
+gh release create v0.1.0 dist/Snapper_v0_1_0.dmg \
   --verify-tag \
   --title "Snapper v0.1.0" \
   --notes "Free ad-hoc signed DMG. Not Developer ID notarized yet."
@@ -147,7 +148,7 @@ gh release create v0.1.0 dist/Snapper.dmg \
 If you only want to upload to an existing release:
 
 ```bash
-gh release upload v0.1.0 dist/Snapper.dmg --clobber
+gh release upload v0.1.0 dist/Snapper_v0_1_0.dmg --clobber
 ```
 
 ## CI/CD Recommendation
@@ -159,7 +160,7 @@ For the current free distribution path:
 - Build on a pinned macOS runner, e.g. `macos-15`.
 - Run `./scripts/package_dmg.sh`.
 - Create a **draft** or **prerelease** GitHub Release.
-- Upload `dist/Snapper.dmg` as a release asset.
+- Upload a versioned DMG asset such as `dist/Snapper_v0_1_0.dmg`.
 - Clearly state that the asset is ad-hoc signed and not notarized.
 
 For a polished public distribution path later:
@@ -195,7 +196,12 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "${{ github.ref_name }}" dist/Snapper.dmg \
+          ASSET_VERSION="${GITHUB_REF_NAME//./_}"
+          ASSET_VERSION="${ASSET_VERSION//-/_}"
+          ASSET_VERSION="${ASSET_VERSION//+/_}"
+          VERSIONED_DMG="dist/Snapper_${ASSET_VERSION}.dmg"
+          cp dist/Snapper.dmg "$VERSIONED_DMG"
+          gh release create "${{ github.ref_name }}" "$VERSIONED_DMG" \
             --draft \
             --title "Snapper ${{ github.ref_name }}" \
             --notes "Free ad-hoc signed DMG. Not Developer ID notarized yet."

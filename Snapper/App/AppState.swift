@@ -39,6 +39,8 @@ final class AppState: ObservableObject {
 
     private var hasCompletedLaunchSetup = false
     private var lastCycledZoneID: UUID?
+    private var lastTargetApplicationPID: pid_t?
+    private var activeApplicationObserver: NSObjectProtocol?
 
     private init() {
         config = configurationManager.load()
@@ -61,6 +63,23 @@ final class AppState: ObservableObject {
         screenManager.onScreensChanged = { [weak self] in
             Task { @MainActor in
                 self?.reloadScreens()
+            }
+        }
+
+        updateLastTargetApplicationPID(from: NSWorkspace.shared.frontmostApplication)
+        activeApplicationObserver = NSWorkspace.shared.notificationCenter.addObserver(
+            forName: NSWorkspace.didActivateApplicationNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] notification in
+            guard
+                let application = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication
+            else {
+                return
+            }
+
+            Task { @MainActor in
+                self?.updateLastTargetApplicationPID(from: application)
             }
         }
 
@@ -154,7 +173,28 @@ final class AppState: ObservableObject {
         config = updated
     }
 
+    func confirmUninstallSnapper() {
+        let alert = NSAlert()
+        alert.alertStyle = .warning
+        alert.messageText = "Uninstall Snapper?"
+        alert.informativeText = "This removes the current Snapper.app bundle, deletes local Snapper configuration, resets Accessibility trust, and quits the app."
+        alert.addButton(withTitle: "Uninstall and Quit")
+        alert.addButton(withTitle: "Cancel")
+
+        NSApp.activate(ignoringOtherApps: true)
+
+        guard alert.runModal() == .alertFirstButtonReturn else {
+            return
+        }
+
+        performUninstall(showErrorAlert: true)
+    }
+
     func uninstallSnapper() {
+        performUninstall(showErrorAlert: false)
+    }
+
+    private func performUninstall(showErrorAlert: Bool) {
         closeOnScreenEditor()
         _ = loginItemManager.setEnabled(false)
 
@@ -162,11 +202,37 @@ final class AppState: ObservableObject {
             try uninstallManager.scheduleUninstall()
             NSApp.terminate(nil)
         } catch {
-            activeAlert = AppAlertMessage(
-                title: "Uninstall Snapper",
-                message: "Could not start uninstall: \(error.localizedDescription)"
-            )
+            if showErrorAlert {
+                showUninstallError(error)
+            } else {
+                activeAlert = AppAlertMessage(
+                    title: "Uninstall Snapper",
+                    message: "Could not start uninstall: \(error.localizedDescription)"
+                )
+            }
         }
+    }
+
+    private func showUninstallError(_ error: Error) {
+        let alert = NSAlert()
+        alert.alertStyle = .critical
+        alert.messageText = "Could Not Uninstall Snapper"
+        alert.informativeText = "Could not start uninstall: \(error.localizedDescription)"
+        alert.addButton(withTitle: "OK")
+        NSApp.activate(ignoringOtherApps: true)
+        alert.runModal()
+    }
+
+    func snapFromMenu(zoneID: UUID) {
+        guard let lastTargetApplicationPID else {
+            activeAlert = AppAlertMessage(
+                title: "Could Not Snap Window",
+                message: "Snapper could not identify the app that was active before the menu opened. Click the target window and try again."
+            )
+            return
+        }
+
+        snap(zoneID: zoneID, targetApplicationPID: lastTargetApplicationPID)
     }
 
     func addZone(on screenIndex: Int, normalizedRect: CGRect) {
@@ -266,6 +332,10 @@ final class AppState: ObservableObject {
     }
 
     func snap(zoneID: UUID) {
+        snap(zoneID: zoneID, targetApplicationPID: nil)
+    }
+
+    private func snap(zoneID: UUID, targetApplicationPID: pid_t?) {
         guard let zone = config.zones.first(where: { $0.id == zoneID }) else {
             return
         }
@@ -283,7 +353,11 @@ final class AppState: ObservableObject {
         }
 
         do {
-            try windowManager.snapFocusedWindow(to: zone)
+            if let targetApplicationPID {
+                try windowManager.snapFocusedWindow(ofApplicationWithProcessID: targetApplicationPID, to: zone)
+            } else {
+                try windowManager.snapFocusedWindow(to: zone)
+            }
         } catch {
             activeAlert = AppAlertMessage(
                 title: "Could Not Snap Window",
@@ -292,7 +366,23 @@ final class AppState: ObservableObject {
         }
     }
 
+    func cycleToNextZoneAndSnapFromMenu() {
+        guard let lastTargetApplicationPID else {
+            activeAlert = AppAlertMessage(
+                title: "Could Not Snap Window",
+                message: "Snapper could not identify the app that was active before the menu opened. Click the target window and try again."
+            )
+            return
+        }
+
+        cycleToNextZoneAndSnap(targetApplicationPID: lastTargetApplicationPID)
+    }
+
     func cycleToNextZoneAndSnap() {
+        cycleToNextZoneAndSnap(targetApplicationPID: nil)
+    }
+
+    private func cycleToNextZoneAndSnap(targetApplicationPID: pid_t?) {
         guard !config.zones.isEmpty else {
             return
         }
@@ -307,7 +397,20 @@ final class AppState: ObservableObject {
         }
 
         lastCycledZoneID = nextZone.id
-        snap(zoneID: nextZone.id)
+        snap(zoneID: nextZone.id, targetApplicationPID: targetApplicationPID)
+    }
+
+    private func updateLastTargetApplicationPID(from application: NSRunningApplication?) {
+        guard let application else {
+            return
+        }
+
+        let processIdentifier = application.processIdentifier
+        guard processIdentifier != getpid(), processIdentifier > 0 else {
+            return
+        }
+
+        lastTargetApplicationPID = processIdentifier
     }
 
     private func reconcileZoneScreenIndexesIfNeeded() {

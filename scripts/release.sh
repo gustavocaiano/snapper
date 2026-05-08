@@ -4,6 +4,8 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 DMG_PATH="$ROOT_DIR/dist/Snapper.dmg"
+VERSIONED_DMG_PATH=""
+VERSIONED_DMG_NAME=""
 
 usage() {
   cat <<'USAGE'
@@ -16,7 +18,7 @@ Creates a Snapper GitHub Release by:
   1. Asking only for the version if no argument is provided
   2. Building dist/Snapper.dmg
   3. Creating and pushing a git tag
-  4. Uploading the DMG as a GitHub Release asset
+  4. Uploading a versioned DMG asset, e.g. Snapper_v0_1_0.dmg
 
 Requirements:
   - gh authenticated with release permissions
@@ -90,6 +92,11 @@ if [[ ! "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+([-+][0-9A-Za-z.-]+)?$ ]]; then
 fi
 
 echo "Preparing release: $TAG"
+ASSET_VERSION="${TAG//./_}"
+ASSET_VERSION="${ASSET_VERSION//-/_}"
+ASSET_VERSION="${ASSET_VERSION//+/_}"
+VERSIONED_DMG_NAME="Snapper_${ASSET_VERSION}.dmg"
+VERSIONED_DMG_PATH="$ROOT_DIR/dist/$VERSIONED_DMG_NAME"
 
 git fetch --tags origin >/dev/null 2>&1 || fail "Could not fetch tags from origin."
 
@@ -109,8 +116,9 @@ echo "Building DMG..."
 "$ROOT_DIR/scripts/package_dmg.sh"
 
 [[ -f "$DMG_PATH" ]] || fail "Expected DMG was not created at $DMG_PATH."
+cp "$DMG_PATH" "$VERSIONED_DMG_PATH"
 
-SHA256="$(shasum -a 256 "$DMG_PATH" | cut -d ' ' -f 1)"
+SHA256="$(shasum -a 256 "$VERSIONED_DMG_PATH" | cut -d ' ' -f 1)"
 NOTES_FILE="$(mktemp)"
 trap 'rm -f "$NOTES_FILE"' EXIT
 
@@ -121,7 +129,7 @@ Free macOS DMG build.
 
 ### Install
 
-1. Download \`Snapper.dmg\`.
+1. Download \`$VERSIONED_DMG_NAME\`.
 2. Open the DMG.
 3. Drag \`Snapper.app\` to Applications.
 4. Launch Snapper from \`/Applications\`.
@@ -143,8 +151,8 @@ echo "Pushing tag $TAG..."
 git push origin "$TAG"
 
 echo "Creating GitHub Release and uploading DMG..."
-RELEASE_URL="$(gh release create "$TAG" "$DMG_PATH" --verify-tag --title "Snapper $TAG" --notes-file "$NOTES_FILE")"
+RELEASE_URL="$(gh release create "$TAG" "$VERSIONED_DMG_PATH" --verify-tag --title "Snapper $TAG" --notes-file "$NOTES_FILE")"
 
 echo
 echo "Release created: $RELEASE_URL"
-echo "Download URL: https://github.com/gustavocaiano/snapper/releases/latest/download/Snapper.dmg"
+echo "Download URL: https://github.com/gustavocaiano/snapper/releases/download/$TAG/$VERSIONED_DMG_NAME"

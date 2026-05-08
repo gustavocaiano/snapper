@@ -40,7 +40,7 @@ It is designed for people who want Mac-native window control without a heavy wor
 | **Menu bar utility** | Runs as an `LSUIElement` app with no Dock noise. |
 | **Local config** | Stores JSON config in `~/Library/Application Support/Snapper/config.json`. |
 | **Launch at Login** | Uses `SMAppService` for native login item support. |
-| **Free DMG packaging** | Builds a shareable `Snapper.dmg` without paid Apple credentials. |
+| **Free DMG packaging** | Builds a shareable DMG without paid Apple credentials. Release assets are versioned, e.g. `Snapper_v0_1_0.dmg`. |
 | **No Screen Recording requirement** | Screen previews use the desktop wallpaper fallback instead of capturing the display. |
 
 ## Requirements
@@ -98,11 +98,11 @@ To publish a GitHub Release, run:
 ./scripts/release.sh
 ```
 
-The release script asks only for the version, then builds the DMG, creates the tag, pushes it, and uploads `Snapper.dmg` to GitHub Releases.
+The release script asks only for the version, then builds the DMG, creates the tag, pushes it, and uploads a versioned asset such as `Snapper_v0_1_0.dmg` to GitHub Releases.
 
 ## Install from the DMG
 
-1. Open `Snapper.dmg`.
+1. Open the downloaded `Snapper_vx_x_x.dmg`.
 2. Drag `Snapper.app` to the **Applications** shortcut.
 3. Eject the disk image.
 4. Launch Snapper from `/Applications`.
