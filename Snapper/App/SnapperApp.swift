@@ -6,13 +6,9 @@ struct SnapperApp: App {
     @StateObject private var appState = AppState.shared
 
     var body: some Scene {
-        MenuBarExtra {
+        MenuBarExtra("Snapper", image: "MenuBarIconTemplate") {
             MenuBarPopoverView()
                 .environmentObject(appState)
-        } label: {
-            SnapperMarkView(size: 18, style: .menuBar)
-                .accessibilityLabel("Snapper")
-                .help("Snapper")
         }
         .menuBarExtraStyle(.window)
     }

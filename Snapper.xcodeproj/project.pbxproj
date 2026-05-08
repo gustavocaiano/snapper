@@ -16,6 +16,7 @@
 		7188DA51FDABFE47615FD78D /* ZoneGeometryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1E76081D92BE6E17B144C /* ZoneGeometryTests.swift */; };
 		8038ABE0C74C145C037EEB6B /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D93345B8AAAE9508B683556 /* AppState.swift */; };
 		82AEEBEF9B73AB839D832799 /* ZoneDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998CACD88ABE52E167E3F514 /* ZoneDetailView.swift */; };
+		8B5293F840183ED658933E3E /* Snapper.icns in Resources */ = {isa = PBXBuildFile; fileRef = C372A5DFD695D3622C10248B /* Snapper.icns */; };
 		98E3D07159E83589FD35E2BA /* OnScreenZoneEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D28535B428D816CF7E9DD4A /* OnScreenZoneEditorView.swift */; };
 		9CF7A45836A74CEE4438C910 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FD4117487F8F2B2B685CD6 /* ApplicationServices.framework */; };
 		A0E1620FA78ED92B51C35E2D /* ScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55BDE9D2341A5DCFC25FBB5 /* ScreenManager.swift */; };
@@ -35,6 +36,7 @@
 		E33CE4AFB9F0A5578EA1CCFD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC76D10937C90F365A334FF /* Extensions.swift */; };
 		E5417E2FF36D9805BAB35789 /* MenuBarPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC35CD07BB1D581E64CCEA71 /* MenuBarPopoverView.swift */; };
 		F325F6CAA9A179825BAB7A14 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822609A48299EA8B8AFA0DC8 /* ConfigurationManager.swift */; };
+		F3C9AB3B9963F1BBE621CB94 /* MenuBarIconTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = F717126506230BA1E036121A /* MenuBarIconTemplate.png */; };
 		F6950AD25CFE62186AAAAA05 /* GlobalDragEventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A13EC7648FF06F0F8BAC324 /* GlobalDragEventMonitor.swift */; };
 		F6FB218A7B7DF174E83AD4E1 /* ShortcutRecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F00F5100EAD99E295264E2 /* ShortcutRecorderView.swift */; };
 /* End PBXBuildFile section */
@@ -80,10 +82,12 @@
 		998CACD88ABE52E167E3F514 /* ZoneDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneDetailView.swift; sourceTree = "<group>"; };
 		AAF8EE7F94142CEBE57D7FB4 /* LoginItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginItemManager.swift; sourceTree = "<group>"; };
 		ADB77EEC21AA9A0467947AAB /* ZoneOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneOverlayView.swift; sourceTree = "<group>"; };
+		C372A5DFD695D3622C10248B /* Snapper.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Snapper.icns; sourceTree = "<group>"; };
 		CC35CD07BB1D581E64CCEA71 /* MenuBarPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarPopoverView.swift; sourceTree = "<group>"; };
 		D55BDE9D2341A5DCFC25FBB5 /* ScreenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenManager.swift; sourceTree = "<group>"; };
 		D63A903648F15CBD6150B65E /* ZoneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneModel.swift; sourceTree = "<group>"; };
 		E47FCD8B04E37874367070E9 /* AccessibilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityManager.swift; sourceTree = "<group>"; };
+		F717126506230BA1E036121A /* MenuBarIconTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBarIconTemplate.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +231,7 @@
 				382E1D23083033DB562E4560 /* Snapper.entitlements */,
 				C0A1A975AA70887E0755CCBB /* App */,
 				61A2140930BAAD98423AB5D0 /* Models */,
+				D7410A6D70F6FC4123A7E357 /* Resources */,
 				3F20279E89A2B73139615F3D /* Services */,
 				E2FD39819799514E33305E6E /* Utilities */,
 				5AF90A18310B1DC6CC4939E4 /* Views */,
@@ -240,6 +245,15 @@
 				7B9924D98C3395C978D89ADE /* SnapperMarkView.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		D7410A6D70F6FC4123A7E357 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F717126506230BA1E036121A /* MenuBarIconTemplate.png */,
+				C372A5DFD695D3622C10248B /* Snapper.icns */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		E2FD39819799514E33305E6E /* Utilities */ = {
@@ -260,13 +274,6 @@
 			path = SnapPreview;
 			sourceTree = "<group>";
 		};
-		"TEMP_81C2E7F0-E5AE-46E6-92BF-9233C8196DD5" /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -275,6 +282,7 @@
 			buildConfigurationList = EBA07DE2013CE259BD7200DE /* Build configuration list for PBXNativeTarget "Snapper" */;
 			buildPhases = (
 				EAE0B8C32F1B4EF867727C4E /* Sources */,
+				B141161EEC8351F0BA1F1094 /* Resources */,
 				46CFD4E40BDEBB95F1B5FCCF /* Frameworks */,
 			);
 			buildRules = (
@@ -342,6 +350,18 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B141161EEC8351F0BA1F1094 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3C9AB3B9963F1BBE621CB94 /* MenuBarIconTemplate.png in Resources */,
+				8B5293F840183ED658933E3E /* Snapper.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5BF50EEDBF7C44FDA365F6B8 /* Sources */ = {

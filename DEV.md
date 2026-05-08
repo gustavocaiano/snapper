@@ -83,6 +83,29 @@ Detach afterwards:
 hdiutil detach /Volumes/Snapper
 ```
 
+## Uninstall a Local Install
+
+If the menu bar icon is visible, quit Snapper from the menu bar menu first.
+
+If the icon is missing, stop the app from Terminal:
+
+```bash
+pkill -x Snapper || true
+```
+
+Remove the installed app:
+
+```bash
+rm -rf /Applications/Snapper.app
+```
+
+Optional cleanup:
+
+```bash
+rm -rf "$HOME/Library/Application Support/Snapper"
+tccutil reset Accessibility com.snapper.app
+```
+
 ## Publish to GitHub Releases Manually
 
 Do **not** commit generated DMGs to the repository. Publish them as GitHub Release assets.

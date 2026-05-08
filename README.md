@@ -17,6 +17,7 @@
 <p align="center">
   <a href="#quick-start">Quick start</a> ·
   <a href="#build-the-dmg">Build DMG</a> ·
+  <a href="#uninstall">Uninstall</a> ·
   <a href="DEV.md">Developer notes</a> ·
   <a href="https://gustavocaiano.github.io/snapper/">Landing page</a>
 </p>
@@ -113,6 +114,27 @@ No repository terminal scripts are needed after copying the app to `/Application
 The current free DMG is ad-hoc signed and not Developer ID notarized. Downloaded copies may trigger macOS Gatekeeper warnings on first launch. Use the normal macOS approval flow, such as right-clicking Snapper and choosing **Open**, or approving it from **System Settings → Privacy & Security**.
 
 Developer ID signing and notarization are the recommended future path for smoother public distribution.
+
+## Uninstall
+
+If Snapper is running, quit it from the menu bar. If the menu bar icon is missing or unreachable:
+
+```bash
+pkill -x Snapper || true
+```
+
+Then remove the installed app:
+
+```bash
+rm -rf /Applications/Snapper.app
+```
+
+Optional: remove local configuration and reset Accessibility trust:
+
+```bash
+rm -rf "$HOME/Library/Application Support/Snapper"
+tccutil reset Accessibility com.snapper.app
+```
 
 ## Generate the Xcode Project
 
